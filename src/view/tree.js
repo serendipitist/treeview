@@ -1,55 +1,39 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+const numberOfChildren = [0 ,1, 11, 2, 21, 22, 3, 31];
+
+const ChildNodes = () => numberOfChildren.map((number, index) => {
+   const value = number.toString();
+   return (value.length === 1 ? <li key={index}><a className="parent">child{number}</a></li> :
+                                <ul><li key={index}><a className="leaf">child{number}</a></li></ul>
+  )
+})
+
+
+const Nodes =() => {
+  return (
+    <div>
+     <ul className="tree-container">
+        <li key={0}><a className="root root-prop">Root</a>
+          <ul>
+            <ChildNodes />
+          </ul>
+        </li>
+      </ul>
+    </div>
+  )
+}
+
 
 class Tree extends Component {
   render() {
     return (
       <div className="tree">
-
-        <ul>
-
-          <li><a>Parent 1</a></li>
-
-          <li><a>Parent 2</a></li>
-
-          <li> <a>Parent 3</a>
-
-            <ul>
-              <li> <a>1st Child of 3</a>
-
-                <ul>
-
-                  <li><a>1st grandchild</a></li>
-
-                  <li><a>2nd grandchild</a></li>
-
-                </ul>
-
-              </li>
-
-              <li><a>2nd Child of 3</a></li>
-
-              <li><a>3rd Child of 3</a></li>
-
-            </ul>
-
-          </li>
-
-          <li> <a>Parent 4</a>
-            <ul>
-
-              <li><a>Parent 4's only child</a></li>
-
-            </ul>
-
-          </li>
-
-        </ul>
-
+        <Nodes/>
       </div>
     );
   }
 }
 
-export default Tree;
+export { Tree , numberOfChildren as nodes};
