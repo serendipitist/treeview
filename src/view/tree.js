@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import '../App.css';
+import search from '../search'
 
-const numberOfChildren = [0 ,1, 11, 2, 21, 22, 3, 31];
+const numberOfChildren = ['child1', 'child11', 'child2', 'child21', 'child22', 'child3', 'child31'];
 
-const ChildNodes = () => numberOfChildren.map((number, index) => {
-   const value = number.toString();
-   return (value.length === 1 ? <li key={index}><a className="parent">child{number}</a></li> :
-                                <ul><li key={index}><a className="leaf">child{number}</a></li></ul>
+const nodes = numberOfChildren.slice();
+nodes.push('root');
+
+const ChildNodes = () => numberOfChildren.map((item, index) => {
+   const value = Number(item.match(/\d+/));
+   return (
+    value < 9 ? <li key={index}><a className="parent">{item}</a></li> :
+                                <ul><li key={index}><a className="leaf">{item}</a></li></ul>
   )
 })
 
-
-const Nodes =() => {
+const Nodes =(showInSearch) => {
+  console.log(showInSearch);
   return (
     <div>
      <ul className="tree-container">
-        <li key={0}><a className="root root-prop">Root</a>
+        <li key={1000}><a className={`root ${showInSearch.showInSearch ? 'search-highlight' : ''} root-prop`}>Root</a>
           <ul>
-            <ChildNodes />
+            <ChildNodes showInSearch={showInSearch} />
           </ul>
         </li>
       </ul>
@@ -27,13 +32,19 @@ const Nodes =() => {
 
 
 class Tree extends Component {
+   constructor(props) {
+    super(props);
+   }
+
+
   render() {
+   const showInSearch = this.props.handleSearchResult() === true;
     return (
       <div className="tree">
-        <Nodes/>
+        <Nodes showInSearch={showInSearch} />
       </div>
     );
   }
 }
 
-export { Tree , numberOfChildren as nodes};
+export { Tree , nodes};

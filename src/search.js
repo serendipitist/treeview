@@ -1,5 +1,6 @@
 import { nodes } from './view/tree';
 
 export default function search(searchInput) {
-  return nodes.toString().includes(searchInput);
+  if(searchInput == '' || null) return 'none';
+  return nodes.toString().includes(searchInput.toLowerCase());
 }

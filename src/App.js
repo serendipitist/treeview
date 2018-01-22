@@ -37,7 +37,7 @@ class App extends Component {
           {!this.handleSearchResult() && <h4>Result Not Found</h4>}
         </header>
         <div>
-          <Tree handleSearchResult={this.handleSearchResult} />
+          <Tree handleSearchResult={this.handleSearchResult}/>
         </div>
       </div>
     );
