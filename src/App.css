@@ -45,7 +45,7 @@
 
 .tree li::before {
     border-top: 1px solid #000;
-    top: 12px;
+    top: 13px;
     width: 8px;
     height: 0;
 }
@@ -63,6 +63,7 @@
 
 .tree li {
   padding-top: 10px;
+  margin: 2px 0;
 }
 
 .root  , .parent  {
@@ -96,4 +97,9 @@
   cursor: pointer;
   font-size:  12px;
   font-weight: bold;
+}
+
+.search-highlight {
+  box-shadow: 3px 3px 15px #666;
+  border: 3px solid #2196f3;
 }

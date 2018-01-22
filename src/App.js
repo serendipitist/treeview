@@ -34,7 +34,7 @@ class App extends Component {
           <SearchBar searchInput={this.state.searchInput}
                      onInputChange={this.onInputChange}
                      handleClick={this.handleClick} />
-          {!this.handleSearchResult() && <h4>Result Not Found</h4>}
+          {!this.handleSearchResult() && this.state.searchInput.length > 0 && <h4>Result Not Found</h4>}
         </header>
         <div>
           <Tree handleSearchResult={this.handleSearchResult}/>
