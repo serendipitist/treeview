@@ -4,6 +4,7 @@ import { Tree } from './view/tree';
 import { nodes } from './view/tree';
 import search from './search';
 import SearchBar from './view/searchBar';
+import _ from 'lodash';
 
 class App extends Component {
   constructor(props) {
@@ -21,9 +22,14 @@ class App extends Component {
     });
   }
 
-  handleSearchResult(event) {
-    if(search(this.state.searchInput))
-      return true;
+  handleSearchResult() {
+    let result = search(this.state.searchInput);
+    if(result) {
+      return result;
+    }
+    else {
+      return false;
+    }
   }
 
   render() {
@@ -33,11 +39,11 @@ class App extends Component {
           <h1 className="App-title">TreeView</h1>
           <SearchBar searchInput={this.state.searchInput}
                      onInputChange={this.onInputChange}
-                     handleClick={this.handleClick} />
-          {!this.handleSearchResult() && this.state.searchInput.length > 0 && <h4>Result Not Found</h4>}
+                     handleClick={this.handleSearchResult} />
+         <h4 className="not-found-msg"></h4>
         </header>
         <div>
-          <Tree handleSearchResult={this.handleSearchResult}/>
+          <Tree handleSearchResult={this.handleSearchResult} searchInput={this.state.searchInput}/>
         </div>
       </div>
     );

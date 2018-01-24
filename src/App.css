@@ -90,13 +90,15 @@
 }
 
 .search-btn {
-  background-color: lightblue;
-  width: 60px;
-  padding: 10px;
-  margin: 5px;
-  cursor: pointer;
-  font-size:  12px;
-  font-weight: bold;
+    background-color: lightblue;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .search-highlight {

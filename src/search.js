@@ -1,6 +1,10 @@
 import { nodes } from './view/tree';
+import _ from 'lodash';
 
 export default function search(searchInput) {
-  if(searchInput.length > 0)
-  return nodes.toString().includes(searchInput.toLowerCase());
+  let result;
+    if(searchInput.length > 0) {
+      result = _.filter(nodes, (item) => item.includes(searchInput.toLowerCase()));
+    }
+  return result;
 }
