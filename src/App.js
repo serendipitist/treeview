@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './app.css';
 import { Tree } from './view/tree';
 import { nodes } from './view/tree';
 import search from './search';
@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       searchInput: '',
+      notFoundMsg: ''
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.handleSearchResult = this.handleSearchResult.bind(this);
@@ -23,8 +24,9 @@ class App extends Component {
   }
 
   handleSearchResult(event) {
-   let result = search(this.state.searchInput);
-   return result;
+    let result;
+    result = search(this.state.searchInput);
+    return result;
   }
 
   render() {
@@ -35,7 +37,7 @@ class App extends Component {
           <SearchBar searchInput={this.state.searchInput}
                      onInputChange={this.onInputChange}
                      handleClick={this.handleSearchResult} />
-          {!this.handleSearchResult() && <h4>Result Not Found</h4>}
+          {this.handleSearchResult() == false && <h4>Result Not Found</h4>}
         </header>
         <div>
           <Tree handleSearchResult={this.handleSearchResult} searchInput={this.state.searchInput}/>

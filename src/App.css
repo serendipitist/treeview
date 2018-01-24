@@ -105,3 +105,7 @@
   box-shadow: 3px 3px 15px #666;
   border: 3px solid #2196f3;
 }
+
+.parent-node {
+  position: absolute;
+}

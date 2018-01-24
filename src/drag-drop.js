@@ -1,5 +1,5 @@
 export default function dragAndDrop() {
-    var el = document.querySelector('.root-node');
+    var el = document.querySelector('.parent');
     var mover = false, x, y, posx, posy, first = true;
     el.onmousedown = function() {
         mover = true;

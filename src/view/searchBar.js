@@ -21,7 +21,7 @@ class SearchBar extends Component {
                  type="search"
                  onChange={this.props.onInputChange}
                  value={ this.props.searchInput} />
-          <button className="search-btn" onClick={this.props.handleClick}>Search</button>
+          {/*<button className="search-btn" onClick={this.props.handleClick}>Search</button>*/}
          </div>
       </form>
     );
