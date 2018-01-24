@@ -22,14 +22,9 @@ class App extends Component {
     });
   }
 
-  handleSearchResult() {
-    let result = search(this.state.searchInput);
-    if(result) {
-      return result;
-    }
-    else {
-      return false;
-    }
+  handleSearchResult(event) {
+   let result = search(this.state.searchInput);
+   return result;
   }
 
   render() {
@@ -40,7 +35,7 @@ class App extends Component {
           <SearchBar searchInput={this.state.searchInput}
                      onInputChange={this.onInputChange}
                      handleClick={this.handleSearchResult} />
-         <h4 className="not-found-msg"></h4>
+          {!this.handleSearchResult() && <h4>Result Not Found</h4>}
         </header>
         <div>
           <Tree handleSearchResult={this.handleSearchResult} searchInput={this.state.searchInput}/>

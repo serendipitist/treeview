@@ -5,6 +5,10 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
+}
+
+  componentDidMount(){
+    this.searchInput.focus();
   }
 
   render() {
@@ -12,11 +16,12 @@ class SearchBar extends Component {
       <form>
         <div>
           <input className="search-bar"
+                 ref={(input) => { this.searchInput = input; }}
                  placeholder= "Search in the tree"
                  type="search"
                  onChange={this.props.onInputChange}
-                 value={ this.props.searchInput } />
-          <button className="search-btn" onClick={this.props.handleSearchResult}>Search</button>
+                 value={ this.props.searchInput} />
+          <button className="search-btn" onClick={this.props.handleClick}>Search</button>
          </div>
       </form>
     );
