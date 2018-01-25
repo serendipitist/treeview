@@ -55,6 +55,14 @@ class Tree extends Component {
       dm.addEventListener('drop',drop,false)});
    }
 
+   componentUnMount() {
+    _.map(numberOfChildren, (item) => {
+      const dm = document.getElementById(item)
+      dm.removeEventListener('dragstart',dragStart,false)
+      dm.removeEventListener('dragover',dragOver,false)
+      dm.removeEventListener('drop',drop,false)});
+   }
+
   render() {
     return (
       <div className="tree">
