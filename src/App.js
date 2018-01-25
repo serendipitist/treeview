@@ -40,6 +40,7 @@ class App extends Component {
           {this.handleSearchResult() == false && <h4>Result Not Found</h4>}
         </header>
         <div>
+           <h4 className="msg"> Tree can be draggable </h4>
           <Tree handleSearchResult={this.handleSearchResult} searchInput={this.state.searchInput}/>
         </div>
       </div>
