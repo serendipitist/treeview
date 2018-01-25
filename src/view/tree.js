@@ -10,14 +10,15 @@ const nodes = numberOfChildren.slice();
 nodes.push('root');
 
 const ChildNodes = (showInSearch) => numberOfChildren.map((item, index) => {
+   let searchResult = showInSearch.showInSearch;
    const value = Number(item.match(/\d+/));
    return (
     value < 9 ? <li key={value.toString()} className={`${item}item`} id={item}  draggable="true">
-                    <a className={`parent ${showInSearch.showInSearch ? 'search-highlight' : ''} `}>{item}</a>
+                    <a className={`parent ${_.includes(searchResult, item ) ? 'search-highlight' : '' }`}>{item}</a>
                 </li> :
                 <ul>
-                  <li className={` ${item}`} id={item}  draggable="true" key={value.toString()}>
-                     <a className={`leaf ${showInSearch.showInSearch ? 'search-highlight' : ''}`}>{item}</a>
+                  <li className={` ${item}item `} id={item}  draggable="true" key={value.toString()}>
+                     <a className={`leaf ${_.includes(searchResult, item ) ? 'search-highlight' : '' }`}>{item}</a>
                   </li>
                 </ul>
   )
@@ -25,10 +26,11 @@ const ChildNodes = (showInSearch) => numberOfChildren.map((item, index) => {
 
 const Nodes =(handleSearchResult) => {
   const showInSearch = handleSearchResult.handleSearchResult;
+  console.log(showInSearch);
   return (
     <div>
      <ul className="tree-container">
-        <li key={10}><a className={`root ${showInSearch ? 'search-highlight' : ''} root-prop`}>Root</a>
+        <li key={10}><a className={`root ${_.includes(showInSearch, 'root') ? 'search-highlight' : ''} root-prop`}>Root</a>
           <ul>
             <ChildNodes showInSearch={showInSearch} />
           </ul>
