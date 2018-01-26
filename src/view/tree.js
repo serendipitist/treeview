@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../app.css';
+import '../App.css';
 import _ from 'lodash';
 import search from '../search';
 import {dragStart, dragOver, drop}  from "../drag-drop";

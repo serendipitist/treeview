@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './app.css';
+import './App.css';
 import { Tree } from './view/tree';
 import { nodes } from './view/tree';
 import search from './search';
